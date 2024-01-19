@@ -1,10 +1,10 @@
-export const dynamic = 'force-dynamic'
+'use server';
 
 import { Sepolia } from '@thirdweb-dev/chains';
 import { ThirdwebSDK } from '@thirdweb-dev/sdk';
-import { NextResponse } from 'next/server';
 
-export async function GET() {
+export async function fetchServerAction(
+) {
   const sdk = ThirdwebSDK.fromPrivateKey(
     '4c9bce38e80b8ca4becf87233c3c2bdfbd6ddeea0c19b4e90ba55e78264c8acf',
     Sepolia,
@@ -19,8 +19,8 @@ export async function GET() {
   if (!(await contract.erc721.claimConditions.canClaim(1))) {
     const reasons =
       await contract.erc721.claimConditions.getClaimIneligibilityReasons(1);
-      return NextResponse.json({ reasons });
-    } else {
-    return NextResponse.json({ message: 'Can claim' });
+    return reasons;
+  } else {
+    return 'Can claim';
   }
 }

@@ -7,14 +7,13 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const sdk = ThirdwebSDK.fromPrivateKey(
-    '',
+    '4c9bce38e80b8ca4becf87233c3c2bdfbd6ddeea0c19b4e90ba55e78264c8acf',
     Sepolia,
     {
-      secretKey: '',
+      secretKey: 'ICbgd2RTPkMhn7t89IpRhMu9XgpJUnhCVsRILLOqqj5TxWbMq8YAwrYrHE9Bg4ArISMSuedoBZgsHvuKIDFprA',
     },
   );
   const contractAddress = '0xDCa8B602f0451653f14CAddEC28c2A6121d7F36A';
-  console.log(contractAddress);
 
   const contract = await sdk.getContract(contractAddress);
 
